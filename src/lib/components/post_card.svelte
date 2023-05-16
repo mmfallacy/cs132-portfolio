@@ -9,7 +9,7 @@
   import Pagination from '$lib/components/post_pagination.svelte'
   import Comment from '$lib/components/post_comment.svelte'
   export let post: Urara.Post
-  export let preview: boolean = false
+  export let preview = false
   export let loading: 'eager' | 'lazy' = 'lazy'
   export let decoding: 'async' | 'sync' | 'auto' = 'async'
   // pagination

@@ -3,8 +3,8 @@
   import { footer as footerConfig } from '$lib/config/general'
   let className: string | undefined = undefined
   export { className as class }
-  export let sticky: boolean = false
-  export let rounded: boolean = false
+  export let sticky = false
+  export let rounded = false
 </script>
 
 <footer

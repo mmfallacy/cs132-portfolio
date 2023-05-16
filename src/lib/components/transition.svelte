@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
-  export let path: string = ''
+  export let path = ''
 </script>
 
 {#key path}

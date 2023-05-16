@@ -7,7 +7,7 @@
   export let toc: Urara.Post.Toc[]
 
   let intersecting: string[] = []
-  let intersectingArticle: boolean = true
+  let intersectingArticle = true
   let bordered: string[] = []
 
   onMount(() => {

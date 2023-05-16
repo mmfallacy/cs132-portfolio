@@ -12,8 +12,8 @@
   let title: string
   let currentTheme: string
   let currentThemeColor: string
-  let search: boolean = false
-  let pin: boolean = true
+  let search = false
+  let pin = true
   let percent: number
   let [scrollY, lastY] = [0, 0]
 
