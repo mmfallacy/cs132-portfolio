@@ -8,6 +8,7 @@ published: 2023-05-16
 <script>
 
     import Scatter from '$lib/components/extra/scatter.svelte'
+    import Heatmap from '$lib/components/extra/heatmap.svelte'
 
 </script>
 
@@ -252,6 +253,8 @@ fig.update_layout(
 #### Correlation Heatmaps
 
 Let's now explore some correlations between the numerical data using heatmap! Here darker color shows a stronger negative correlation while bright colors shows a stronger positive correlation.
+
+<Heatmap />
 
 ```py
 import polars as pl
