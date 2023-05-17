@@ -83,6 +83,8 @@
     }
   },
   "dependencies": {
+    "d3": "^7.8.4",
+    "pandas-js": "^0.2.4",
     "plotly.js-dist": "^2.23.1",
     "svelte-plotly.js": "^0.3.2"
   }
