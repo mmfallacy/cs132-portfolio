@@ -81,5 +81,9 @@
     "overrides": {
       "vite>rollup": "^3.10.0"
     }
+  },
+  "dependencies": {
+    "plotly.js-dist": "^2.23.1",
+    "svelte-plotly.js": "^0.3.2"
   }
 }

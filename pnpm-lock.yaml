@@ -3,6 +3,14 @@ lockfileVersion: '6.0'
 overrides:
   vite>rollup: ^3.10.0
 
+dependencies:
+  plotly.js-dist:
+    specifier: ^2.23.1
+    version: 2.23.1
+  svelte-plotly.js:
+    specifier: ^0.3.2
+    version: 0.3.2(plotly.js-dist@2.23.1)
+
 devDependencies:
   '@iconify-json/heroicons-outline':
     specifier: ^1.1.6
@@ -1956,6 +1964,16 @@ packages:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
 
+  /@types/lodash-es@4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
+    dependencies:
+      '@types/lodash': 4.14.194
+    dev: false
+
+  /@types/lodash@4.14.194:
+    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
+    dev: false
+
   /@types/mdast@3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
     dependencies:
@@ -1969,6 +1987,10 @@ packages:
   /@types/node@18.16.3:
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
     dev: true
+
+  /@types/plotly.js@2.12.18:
+    resolution: {integrity: sha512-ff+CIEWnqZNjZqHtQZvkEAVuLs9fkm1f54QnPVmgoET7wMHdSqUka2hasVN4e5yfHD05YwGjsAtCseewJh/BMw==}
+    dev: false
 
   /@types/pug@2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
@@ -4144,6 +4166,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: true
@@ -4854,6 +4880,10 @@ packages:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
     dev: true
+
+  /plotly.js-dist@2.23.1:
+    resolution: {integrity: sha512-+C9FAAEO3/Fw/4sRzwlo9dAjjExXcFNRgbrSHLeYWPppxmglx1RU26vUo8c98LCH9H/5X30BLpgOCJBp8nWJiw==}
+    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.23):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -5682,6 +5712,17 @@ packages:
     dependencies:
       svelte: 3.58.0
     dev: true
+
+  /svelte-plotly.js@0.3.2(plotly.js-dist@2.23.1):
+    resolution: {integrity: sha512-9OtCLoYfa8CluRkEod8NOa35GW5Y98+tZN7RKZLM7B4mYhsizSPvevLvxkN39XW7+jvx6rugUKTUtb6YQlYyNA==}
+    peerDependencies:
+      plotly.js-dist: ^2.12
+    dependencies:
+      '@types/lodash-es': 4.17.7
+      '@types/plotly.js': 2.12.18
+      lodash-es: 4.17.21
+      plotly.js-dist: 2.23.1
+    dev: false
 
   /svelte-preprocess@5.0.3(@babel/core@7.21.5)(postcss@8.4.23)(svelte@3.58.0)(typescript@4.9.5):
     resolution: {integrity: sha512-GrHF1rusdJVbOZOwgPWtpqmaexkydznKzy5qIC2FabgpFyKN57bjMUUUqPRfbBXK5igiEWn1uO/DXsa2vJ5VHA==}
