@@ -2,8 +2,14 @@
 title: 'Data Exploration'
 created: 2023-05-16
 updated: 2023-05-16
-published: 2023-05-16 
+published: 2023-05-16
 ---
+
+<script>
+
+    import Scatter from '$lib/components/extra/scatter.svelte'
+
+</script>
 
 ## Overview
 
@@ -24,17 +30,22 @@ We made the tweets into lowercase, removed hashtags, replaced emojis into interp
 ## Data Exploration Steps
 
 ### Preliminaries
+
 Install `demoji`, `polars`, `nltk` through
+
 ```py
 pip install demoji polars nltk
 ```
+
 Install `nltk.corpus.stopwords` for English stopword filtering through
+
 ```py
 import nltk
 nltk.download('stopwords')
 ```
 
 Install `nltk.stem.wordnet` for Stemming and Lemmatization through
+
 ```py
 import nltk
 nltk.download('wordnet')
@@ -43,6 +54,7 @@ nltk.download('wordnet')
 ### Preprocessing
 
 #### Cleaning ID values.
+
 As the ID values for the dataset is in the form of `00-nn`, we need to transform it such that we obtain an integer value `nn`.
 
 ```py
@@ -53,7 +65,8 @@ df = df.select([
 ])
 ```
 
-#### Dropping rows without Tweets or Tweet URL 
+#### Dropping rows without Tweets or Tweet URL
+
 Since we deem that the columns `Tweet` and `Tweet URL` as the most important features, we drop all rows without these features.
 
 ```py
@@ -62,14 +75,16 @@ df = df.filter(pl.col("Tweet").is_not_null() & pl.col("Tweet URL").is_not_null()
 ```
 
 #### Dropping unused features
+
 Since, the following columns: Location, Account bio, Group, Collector, Category, Screenshot, Rating, Reasoning, Remarks, Reviewer, Views, and Review are not needed, we will be removing them.
 
 ```py
 # Drop multiple columns\n
-df = df.drop(['Location', 'Account bio', 'Group','Collector', 'Category','Keywords','Rating','Reasoning', 'Remarks','Reviewer','Review', 'Screenshot', 'Views'])  
+df = df.drop(['Location', 'Account bio', 'Group','Collector', 'Category','Keywords','Rating','Reasoning', 'Remarks','Reviewer','Review', 'Screenshot', 'Views'])
 ```
 
 #### Impute missing values
+
 We will now be checking how big our dataset is. We do this by checking df.shape This revealed that we have 153 unique rows to work with. However, we have some entries that have a null value. To handle this we need to check whether we can replace the null value with a value otherwise we need to fill that up. In the Content type column which is categoric column, we cannot simply do this. Hence, I will be reviewing the dataset and input the values manually and importing it again. On the other hand, engagement metrics that are null we can safely set to 0.
 
 ```py
@@ -77,7 +92,9 @@ df = df.fill_null(0)
 ```
 
 #### Clean the tweet data
+
 ##### Turn the text into lowercase
+
 ```py
 # Change tweet case to lowercase
 df = df.select(
@@ -85,7 +102,9 @@ df = df.select(
     pl.col("Translated").apply(lambda tweet: tweet.lower()).alias("Clean")
 )
 ```
+
 ##### Remove hashtags
+
 ```py
 # Remove hashtags
 HASH_RE = r"#(\w+)"
@@ -95,7 +114,8 @@ df = df.select(
 )
 ```
 
-##### Remove URL 
+##### Remove URL
+
 ```py
 # Remove URLs
 URL_RE = r'(https?://[^\s]+)'
@@ -107,12 +127,13 @@ df = df.select(
 ```
 
 ##### Turn emojis into words
+
 ```py
 # Replace all emojis into interpretation
 def emoji_to_word(tweet):
   for symbol, interpretation in demoji.findall(tweet).items():
     interpretation = interpretation.lower()
-    # Turn flag: Philippines into flagphilippines 
+    # Turn flag: Philippines into flagphilippines
     interpretation = re.sub('[^0-9a-z]+', '', interpretation)
     # replace all emojis to "emojiinterpretation "
     tweet = re.sub(symbol, interpretation+' ', tweet)
@@ -125,6 +146,7 @@ df = df.select(
 ```
 
 ##### Remove non-alphanumeric characters
+
 ```py
 # Remove non alphanumeric characters
 df = df.select(
@@ -134,6 +156,7 @@ df = df.select(
 ```
 
 ##### Cast tweets into array of string tokens
+
 ```py
 # Cast Tweets to word array instead of long string.
 df = df.select(
@@ -143,6 +166,7 @@ df = df.select(
 ```
 
 ##### Filter english stopwords
+
 ```py
 # Strip english stopwords
 ensw = stopwords.words('english')
@@ -153,6 +177,7 @@ df = df.select(
 ```
 
 ##### Stem and Lemmatize
+
 ```py
 # Stem and Lemmatize.
 from nltk.stem import PorterStemmer, WordNetLemmatizer
@@ -170,8 +195,11 @@ df = df.select(
 
 ### Visualization
 
-#### Scatterplots!
-Let's now explore some relations between the data using scatterplots! We will plot Followers against Followers to see what kind of accounts usually tweet disinformation. Here we can see there is a huge cluster of accounts that have relatively high following vs their amount of followers.
+#### Scatterplots
+
+Let's now explore some relations between the data using scatterplots! We will plot the number of Followers against the number of Followings to see what kind of accounts usually tweet disinformation about this particular topic. Here we can see there is a huge cluster of accounts that have relatively high following vs their amount of followers.
+
+<Scatter />
 
 ```py
 df1=df.select(
@@ -221,8 +249,8 @@ fig.update_layout(
 )
 ```
 
-
 #### Correlation Heatmaps
+
 Let's now explore some correlations between the numerical data using heatmap! Here darker color shows a stronger negative correlation while bright colors shows a stronger positive correlation.
 
 ```py
@@ -248,7 +276,9 @@ plt.show()
 ```
 
 ### OMG BARPLOT!
+
 Let's now explore how the different numerical data are distributed across groups using bar plots. We only have 3 groups however the media group data only contains 2 data points.
+
 ```py
 import polars as pl
 import seaborn as sns
