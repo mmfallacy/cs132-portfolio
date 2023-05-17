@@ -9,6 +9,8 @@ published: 2023-05-16
 
     import Scatter from '$lib/components/extra/scatter.svelte'
     import Heatmap from '$lib/components/extra/heatmap.svelte'
+    import Bar from '$lib/components/extra/bar.svelte'
+    import BarFreq from '$lib/components/extra/barfreq.svelte'
 
 </script>
 
@@ -16,17 +18,11 @@ published: 2023-05-16
 
 ### Handling Missing/Null Data
 
-Some of the rows for the engagement metrics (Likes, Replies, Retweets, and Quote Tweets) were null. To handle this we safely set those values to 0. There were other columns which had null values such as **Location** and **Account Bio**, however we are not going to be using that data hence we just dropped it in the dataframe.
+Some of the rows for the engagement metrics (Likes, Replies, Retweets, and Quote Tweets) were null. To handle this we safely set those values to 0. There were other columns which had null values such as **Location** and **Account Bio**, however we are not going to be using that data for exploration / visualization hence we simply just dropped those rows.
 
 ### Outliers
 
 During the data collection phase, it was made sure that there were no outliers that were going to be present.
-
-### Making Sure Tweets Were Consistent
-
-We made the tweets into lowercase, removed hashtags, replaced emojis into interpretation using `demoji`, removed non-alphanumeric characters. We then translate all tweets to English and then removed english stopwords afterwards. Lastly, **Stemming** and **lemmatization** were performed.
-
-## Visualization
 
 ## Data Exploration Steps
 
@@ -86,7 +82,7 @@ df = df.drop(['Location', 'Account bio', 'Group','Collector', 'Category','Keywor
 
 #### Impute missing values
 
-We will now be checking how big our dataset is. We do this by checking df.shape This revealed that we have 153 unique rows to work with. However, we have some entries that have a null value. To handle this we need to check whether we can replace the null value with a value otherwise we need to fill that up. In the Content type column which is categoric column, we cannot simply do this. Hence, I will be reviewing the dataset and input the values manually and importing it again. On the other hand, engagement metrics that are null we can safely set to 0.
+We will now be checking how big our dataset is. We do this by checking `df.shape` This revealed that we have 153 unique rows to work with. However, we have some entries that have a null value. To handle this we need to check whether we can replace the null value with a value otherwise we need to fill that up. In the Content type column which is categoric column, we cannot simply do this. Hence, I will be reviewing the dataset and input the values manually and importing it again. On the other hand, engagement metrics that are null we can safely set to 0.
 
 ```py
 df = df.fill_null(0)
@@ -278,9 +274,11 @@ sns.heatmap(corr_matrix, annot=True, cmap="viridis")
 plt.show()
 ```
 
-### OMG BARPLOT!
+#### Barplot
 
 Let's now explore how the different numerical data are distributed across groups using bar plots. We only have 3 groups however the media group data only contains 2 data points.
+
+<Bar/>
 
 ```py
 import polars as pl
@@ -322,3 +320,7 @@ plt.ylabel("Total Count")
 plt.legend(title="Account Type")
 plt.show()
 ```
+
+Now we'll plot the top 15 frequent words seen in these tweets.
+
+<BarFreq/>
