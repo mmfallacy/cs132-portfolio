@@ -72,6 +72,10 @@ export const header: HeaderConfig = {
       link: '/data-modelling'
     },
     {
+      text: 'Results',
+      link: '/results'
+    },
+    {
       text: 'About Us',
       link: '/about-us'
     }
