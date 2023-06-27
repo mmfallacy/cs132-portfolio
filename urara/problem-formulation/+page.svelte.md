@@ -11,8 +11,8 @@ Benigno "Ninoy" Aquino Jr. is a notable Filipino politician, journalist, and maj
 
 ## Research Question
 What is the sentiment of tweets spreading misinformation about Ninoy Aquino's alleged links to the NPA, communism, and the Plaza Miranda bombing? 
-## Hypothesis
-$$H_oTweets spreading misinformation about Ninoy Aquino's alleged links to the NPA, communism, and the Plaza Miranda bombing are **more likely to be negative** in sentiment.
+## (Alternative) Hypothesis
+Tweets spreading misinformation about Ninoy Aquino's alleged links to the NPA, communism, and the Plaza Miranda bombing are **more likely to be negative** in sentiment.
 ## Null Hypothesis
 There is **no prevailing sentiment** in tweets spreading misinformation about Ninoy Aquino's alleged links to the NPA, communism, and the Plaza Miranda bombing.
 ## Action Plan
