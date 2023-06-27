@@ -56,8 +56,8 @@ export const head: HeadConfig = {}
 export const header: HeaderConfig = {
   nav: [
     {
-      text: 'Problem Formulation',
-      link: '/problem-formulation'
+      text: 'Project Overview',
+      link: '/project-overview'
     },
     {
       text: 'Data Collection',
