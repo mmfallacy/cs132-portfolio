@@ -5,16 +5,14 @@ updated: 2023-06-27
 published: 2023-06-27
 ---
 
-## Statistical Model
-
 ## Machine Learning
 
-For this project, we wanted to create a model that would classify the sentiments of the tweets. Since there were available pre-trained models on tweet data, we decided to go with a supervised-learning based model.
+For this project, we wanted to create a model that would classify the sentiments of the tweets. Since there were available pre-trained models on tweet data, we decided to go with a supervised-learning based model. We applied the same pre-processing methods on `836` more collected tweets found [here](https://docs.google.com/spreadsheets/d/1i8CZeOF7z2--YdYhqKjyMJf9TEtZUmoiC6rJQ_ogYOk/edit?usp=sharing).
 
 First, we load the data and accessed the Lemmatized column
 
 ```py
-data_frame = pd.read_csv("clean_9.csv")
+data_frame = pd.read_csv("clean.csv")
 lemmatized_column = data_frame["Lemmatized"]
 ```
 
@@ -99,3 +97,33 @@ weighted avg       0.90      0.90      0.89       251
 Here is the result of the confusion matrix visualized using seaborn.
 
 ![Alt text](image.png)
+
+## Statistical Model
+
+Since we aim to check if there is a prevailing sentiment or not, we can use the Binomial Test. The [Binomial test](https://www.ibm.com/docs/en/spss-statistics/beta?topic=tests-binomial-test) compares the frequencies of two categories. In our case, we compare the the categories `POSITIVE` and `NEGATIVE` sentiment. We can then check if both categories have the same distribution over our set of 153 tweets.
+
+To do this, we first separate the tweets labelled `POSITIVE` and `NEGATIVE` into two dataframes.
+
+```py
+positive = dataset.loc[dataset['Sentiment Num'] > 0]
+negative = dataset.loc[dataset['Sentiment Num'] == 0]
+```
+
+Afterwards, we can apply `scikit-learn`'s `binomtest` function
+
+```
+binomtest(len(negative), n=len(positive)+len(negative))
+```
+
+_Note that by default, this runs a two-tailed binomial test._
+
+We've obtained a p-value of $4.7e-7$ which tells us that the distribution of `NEGATIVE` within the test set is not 50% and hence there **exists** a prevailing sentiment.
+
+We can then check the count by printing the following:
+
+```py
+print("Number of positive tweets: ", len(positive))
+print("Number of negative tweets: ", len(negative))
+```
+
+This yields us: 22 positive tweets and 131 negative tweets. Therefore, the tweets gathered are deemed to be largely negative in sentiment.
