@@ -7,12 +7,12 @@ published: 2023-06-27
 
 ## Machine Learning
 
-For this project, we wanted to create a model that would classify the sentiments of the tweets. Since there were available pre-trained models on tweet data, we decided to go with a supervised-learning based model.
+For this project, we wanted to create a model that would classify the sentiments of the tweets. Since there were available pre-trained models on tweet data, we decided to go with a supervised-learning based model. We applied the same pre-processing methods on `836` more collected tweets found [here](https://docs.google.com/spreadsheets/d/1i8CZeOF7z2--YdYhqKjyMJf9TEtZUmoiC6rJQ_ogYOk/edit?usp=sharing).
 
 First, we load the data and accessed the Lemmatized column
 
 ```py
-data_frame = pd.read_csv("clean_9.csv")
+data_frame = pd.read_csv("clean.csv")
 lemmatized_column = data_frame["Lemmatized"]
 ```
 

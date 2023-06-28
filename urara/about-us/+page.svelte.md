@@ -5,7 +5,7 @@ updated: 2023-05-16
 published: 2023-05-16
 ---
 
-## S Canlas -
+## S Canlas
 
 Hey there! I'm Sofia, an undergraduate student at University of the Philippines with a passion for cybersecurity and vintage internet design. I'm currently exploring the intriguing realms of data protection while infusing a touch of nostalgia from the early days of the web.
 
