@@ -8,7 +8,7 @@ export const site: SiteConfig = {
   lang: 'en-US',
   description: 'Powered by SvelteKit/Urara',
   author: {
-    avatar: '/assets/maskable@512.png',
+    avatar: '/assets/nc@512.png',
     name: 'Cakes',
     status: '🍰',
     bio: 'S Canlas • Chael Monasterial • Jed Tan'
