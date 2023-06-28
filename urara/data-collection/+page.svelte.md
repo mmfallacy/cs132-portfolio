@@ -28,5 +28,3 @@ Each sample in the dataset represents one tweet with the following columns:
 | https://twitter.com/Hyden007Toro/status/1234546125945888768 | @Hyden007Toro | Hyden Toro | Filipino Social Media Warrior ! Working for a better Philippines ! | Anonymous | 02/15 | 179 | 6 | Makati, Nueva Viscaya, RP | Ninoy Aquino, fake hero, NPA founder... | Text | 03/03/20 02:28 | Rational | 0 | 0 | 0 | 0 |
 
 The dataset includes the aforementioned fields for each tweet and can be access at this [link](https://bit.ly/41CU2YI)<sup>\*</sup>
-
-\*Data is not yet 100% clean and still needs to be reviewed and edited.
