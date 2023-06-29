@@ -94,9 +94,17 @@ As we can see the model has an accuray of 90% however we cannot hide the fact th
 weighted avg       0.90      0.90      0.89       251
 ```
 
-Here is the result of the confusion matrix visualized using seaborn.
+Here is the result of the confusion matrix visualized using `seaborn`.
 
 ![Alt text](image.png)
+
+Here is the visualization of the different word frequencies for each classification (negative and positive) using  `wordcloud`
+
+|          **Negative Sentiment**          |          **Positive Sentiment**          |
+|:----------------------------------------:|:----------------------------------------:|
+| ![ Negative Word Cloud ]( negative.png ) | ![ Positive Word Cloud ]( positive.png ) |
+
+Notice the similarities among each sentiments, it is just almost all Tweets have very similar words.
 
 ## Statistical Model
 
